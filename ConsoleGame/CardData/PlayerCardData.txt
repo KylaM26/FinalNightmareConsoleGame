@@ -1,0 +1,5 @@
+1 Noob_Attack 5 0 0
+2 Death_Drop 5 2 0
+3 Noob_Shield 0 0 5
+4 Steal_Heal 0 5 0
+5 Upper_Cut 7 0 0

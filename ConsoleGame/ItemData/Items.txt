@@ -1,0 +1,2 @@
+Warrior's_Robe 2 5 0 0.55 2
+Tall_Cap 0 10 5 0 0
