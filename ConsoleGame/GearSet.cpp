@@ -7,10 +7,10 @@ GearSet::GearSet() {
 GearSet::GearSet(Inventory& inventory) {
 	set = std::vector<Item>(4);
 
-	const Item noobCap = Item("Noob Cap", 5, 2, .5, 0.0, CAP);
-	const Item noobCharm = Item("Noob Charm", 5, 2, .5, 0.0, CHARM);
-	const Item noobRobe = Item("Noob Robe", 5, 2, .5, 0.0, ROBE);
-	const Item noobShoes = Item("Noob Shoes", 5, 2, .5, 0.0, SHOES);
+	const Item noobCap = Item("Noob Cap", 5, 2, .5, 0.0,0, CAP);
+	const Item noobCharm = Item("Noob Charm", 5, 2, .5, 0.0, 0, CHARM);
+	const Item noobRobe = Item("Noob Robe", 5, 2, .5, 0.0, 0, ROBE);
+	const Item noobShoes = Item("Noob Shoes", 5, 2, .5, 0.0, 0, SHOES);
 
 	inventory.AddItem(noobCap);
 	inventory.AddItem(noobCharm);

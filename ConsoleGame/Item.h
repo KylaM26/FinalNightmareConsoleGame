@@ -14,12 +14,13 @@ class Item {
 public:
 	std::string name;
 	int healthBonus, attackBonus;
+	int price;
 	float healBonus, criticalBonus;
 	int type;
 
 	Item();
 
-	Item(const char* itemName, int health, int attack, float heal, float critical, int itemType);
+	Item(const char* itemName, int health, int attack, float heal, float critical, int price, int itemType);
 
 	void DisplayStats() const;
 

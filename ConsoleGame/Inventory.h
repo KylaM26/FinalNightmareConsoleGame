@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include "Item.h"
+#include <fstream>
 //#include "Player.h"
 
 class Inventory {
@@ -23,6 +24,7 @@ public:
 	void ListShoes() const;
 
 	const int GetOption() const;
+	void FillInventory(const char* path, int itemsCount);
 
 	const Item& GetItem(const char* name, ITEM_TYPE type) const;
 	std::vector<Item>& GetInventory();

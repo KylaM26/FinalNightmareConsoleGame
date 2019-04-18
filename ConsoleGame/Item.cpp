@@ -2,13 +2,15 @@
 
 Item::Item() {
 	this->name = "UNKNOWN";
+	this->price = 0;
 	this->healthBonus = 0, this->attackBonus = 0;
 	this->healBonus = 0, this->criticalBonus = 0;
 	this->type = NONE;
 }
 
-Item::Item(const char* itemName, int health, int attack, float heal, float critical, int itemType) {
+Item::Item(const char* itemName, int health, int attack, float heal, float critical,int price, int itemType) {
 	this->name = itemName;
+	this->price = price;
 	this->healthBonus = health;
 	this->attackBonus = attack;
 	this->healBonus = heal;

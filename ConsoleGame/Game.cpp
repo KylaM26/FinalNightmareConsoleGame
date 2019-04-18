@@ -3,6 +3,7 @@
 Game::Game() {
 	// Instantiate variables
 	inventoryManager = InventoryManager();
+	battleManager = BattleManager();
 	//	menu = Menu();
 }
 
@@ -13,6 +14,7 @@ void Game::Play() {
 	switch (choice) { 
 	case 1: // Player wants to adventure
 		std::cout << "Began Adventure" << std::endl;
+		battleManager = BattleManager(player);
 		break;
 	case 2: // Player wants to go into inventory mode
 		inventoryManager.OpenInventory(player);

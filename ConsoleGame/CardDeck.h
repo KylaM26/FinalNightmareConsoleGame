@@ -18,7 +18,8 @@ public:
 	CardDeck();
 	CardDeck(int numberOfCards, const char* path);
 
-	//void GenerateCards(int min, int max);
+	void DisplayCards();
+	const Card ChooseCard(const int index) const;
 
 	std::vector<Card> GetDeck() const;
 	const Card& GetCard(int cardIndex) const;

@@ -2,8 +2,17 @@
 
 Enemy::Enemy() {
 	srand(time(0));
-	health = rand() % 20 + 10;
-	deck = CardDeck(5, "CardData/EnemyCardData.txt");
+
+	if (rand() % 100 > 80) {
+		health = (rand() % (20 + 10) * 2);
+		isBoss = true; // Bosses will have twice amount of health
+	} else {
+		isBoss = false;
+		health = (rand() % 20 + 10);
+	}
+	this->deck = CardDeck(5, "CardData/EnemyCardData.txt");
+//	std::cout << "Deck size: " << deck.GetDeck().size() << std::endl;
+	//system("pause");
 }
 
 void Enemy::UseCard(Player& player) {
@@ -12,16 +21,17 @@ void Enemy::UseCard(Player& player) {
 
 	health += deck.GetCard(random).healPoints;
 	player.health -= deck.GetCard(random).attackPoints;
+	std::cout << "Your enemy used: " << deck.ChooseCard(random).name << std::endl;
+
 }
 
 void Enemy::DropLoot(Player& player) {
 	srand(time(0));
 	player.gold += rand() % player.level + 1;
 
-	int randomChance = rand() % 100;
+	int randomChance1 = rand() % 100;
 
-
-	if (randomChance > 0 && randomChance < 100) {
+	if (randomChance1 > 0 && randomChance1 < 100) {
 		std::ifstream file;
 		
 		const int itemCount = 2;
@@ -45,11 +55,33 @@ void Enemy::DropLoot(Player& player) {
 		}
 
 		file.close();
+
+		int randomIndex = rand() % items.size();
+		Item droppedItem = items.at(randomIndex);
+
+		std::cout << "You recieved " << droppedItem.name << std::endl;
+		player.inventory.AddItem(droppedItem);
+	} else {
+		std::cout << "You recieved 50 pieces of gold." << std::endl;
+		player.gold += 50;
 	}
+
+	player.experience += 10;
 }
 
 void Enemy::Die(Player& player) {
 	DropLoot(player);
+}
+
+int Enemy::GetHealth() const{
+	return health;
+}
+void Enemy::GetEnemyStatus() const {
+	std::cout << std::endl;
+	if (isBoss)
+		std::cout << "Boss enemy was spawned!" << std::endl;
+	else
+		std::cout << "An enemy was spawned." << std::endl;
 }
 
 Enemy::~Enemy() {

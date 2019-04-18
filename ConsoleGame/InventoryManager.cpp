@@ -9,8 +9,8 @@ InventoryManager::InventoryManager() {
 
 void InventoryManager::OpenInventory(Player& player) {
 	isInInventory = true;
-	player.inventory.AddItem(Item("Test Cap", 0, 0, 0, 0, CAP));
-	player.inventory.AddItem(Item("Test Robe", 0, 0, 0, 0, ROBE));
+	player.inventory.AddItem(Item("Test Cap", 0, 0, 0, 0,0, CAP));
+	player.inventory.AddItem(Item("Test Robe", 0, 0, 0, 0,0, ROBE));
 
 	while (isInInventory) {
 		player.gear.ShowGearSet();

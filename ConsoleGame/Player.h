@@ -5,6 +5,7 @@
 #include "GearSet.h"
 #include "CardDeck.h"
 
+
 class Player {
 public:
 	int gold;
@@ -19,12 +20,10 @@ public:
 
 	void CalculateHealth(); // Health will be recalculated everytime the player levels up
 
-	void Attack(); 
-	void Defend();
-	void Die();
-	void Heal();
+	const Card Attack(); 
 
 	void ShowStats() const;
+	void LevelUp();
 
 	~Player();
 };

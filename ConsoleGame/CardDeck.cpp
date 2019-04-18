@@ -6,26 +6,29 @@ CardDeck::CardDeck() {
 
 CardDeck::CardDeck(int numberOfCards, const char* path) {
 	this->numberOfCards = numberOfCards;
+	this->deck = std::vector<Card>(numberOfCards);
 	ReadCardData(path);
+
 }
 
 void CardDeck::ReadCardData(const char* path) {
 	std::ifstream file(path);
-
 	if (file.is_open()) {
-		for (int index = 0; index < numberOfCards; index++) {
-			Card newCard = Card();
-			deck.push_back(newCard);
-			while (file >> deck.at(index).id >> deck.at(index).name >> deck.at(index).attackPoints >> deck.at(index).healPoints >> deck.at(index).defensePoints) {
-	//			std::cout << deck.at(index).id << ", " << deck.at(index).name << std::endl;
-			}
+		int index = 0;
+
+		while (true) {
+			// Figure out index issue
+			file >> deck.at(index).id >> deck.at(index).name >> deck.at(index).attackPoints >> deck.at(index).healPoints >> deck.at(index).defensePoints;
+
+			if (index == numberOfCards - 1)
+				break;
+
+			index++;
 		}
-	} else {
-		std::cout << "Could not open file to read card data." << std::endl;
-		return;
+
+		file.close();
 	}
 
-	file.close();
 }
 
 std::vector<Card>CardDeck::GetDeck() const {
@@ -45,5 +48,19 @@ void CardDeck::AddCard(const Card& card) {
 	deck.push_back(card);
 }
 
+const Card CardDeck::ChooseCard(const int index) const {
+	if (index < deck.size())
+		return deck.at(index);
+	
+	return deck.at(0);
+}
+
+void CardDeck::DisplayCards() {
+	std::cout << std::endl;
+	std::cout << "------- Your cards -------" << std::endl;
+	for (int index = 0; index < deck.size(); index++) {
+		std::cout << index << ") "<< deck.at(index).name << std::endl;
+	}
+}
 CardDeck::~CardDeck() {
 }

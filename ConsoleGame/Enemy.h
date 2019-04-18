@@ -11,15 +11,17 @@
 
 class Enemy {
 private:
-	int health;
 	CardDeck deck;
-	void DropLoot(Player& player);
+	bool isBoss;
+
 public:
 	Enemy();
-
+	int health;
 	void UseCard(Player& player);
+	void DropLoot(Player& player);
 	void Die(Player& player);
-
+	void GetEnemyStatus() const;
+	int GetHealth() const;
 	~Enemy();
 };
 

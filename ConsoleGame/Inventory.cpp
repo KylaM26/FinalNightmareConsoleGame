@@ -11,6 +11,7 @@ void Inventory::AddItem(const Item& item) {
 void Inventory::DeleteItem(std::vector<Item>& playerGear) {
 	std::cin.ignore(80, '\n');
 	bool isDeletingItems = true;
+	bool canDeleteItem = true;
 
 	while (isDeletingItems) {
 		std::string itemName = "";
@@ -29,21 +30,29 @@ void Inventory::DeleteItem(std::vector<Item>& playerGear) {
 			}
 		}
 
-		if (itemNum < playerGear.size()) {
+		std::cout << itemNum << std::endl;
+
+		if (itemNum >= playerGear.size()) {
+			for (int i = 0; i < playerGear.size(); i++) {
+				if (playerGear.at(i).name == itemName)
+					itemNum = i;
+			}
+
 			if (playerGear.at(itemNum).name == itemName) {
+				canDeleteItem = false;
 				std::cout << "Cannot delete item that you are wearing." << std::endl;
 				system("pause");
-			} else {
-
 			}
 		}
 
-		if (items.at(itemNum).name == itemName) {
-			items.erase(items.begin() + itemNum);
-			std::cout << "Successfully deleted " << itemName << std::endl;
-		}
+		if (canDeleteItem) {
+			if (items.at(itemNum).name == itemName) {
+				items.erase(items.begin() + itemNum);
+				std::cout << "Successfully deleted " << itemName << std::endl;
+			}
 
- 	}
+		}
+	}
 
 	system("cls");
 }
@@ -149,13 +158,37 @@ const Item& Inventory::GetItem(const char* name, ITEM_TYPE type) const {
 
 		if (index == items.size()) {
 			isLookingAtInventory = false;
-			return Item("NA", 0, 0, 0, 0, NONE);
+			return Item("NA", 0, 0, 0, 0, 0, NONE);
 		}
 	}
 
 	return items.at(index);
 
 }
+
+void Inventory::FillInventory(const char* path, int itemsCount) {
+	std::ifstream file;
+	file.open(path, std::ios::in);
+
+	if (!file.is_open()) {
+		std::cout << "Cannot read file to fill inventory, Failed to open " << path <<  std::endl;
+		return;
+	}
+
+	bool isReadingFile = true;
+
+	while (isReadingFile) {
+		Item currentItem = Item();
+		file >> currentItem.name >> currentItem.healthBonus >> currentItem.attackBonus >> currentItem.healBonus >> currentItem.criticalBonus >> currentItem.price >> currentItem.type;
+		items.push_back(currentItem);
+
+		if (itemsCount == (items.size() - 1))
+			isReadingFile = false;
+	}
+
+	file.close();
+}
+
 
 std::vector<Item>&Inventory::GetInventory() {
 	return this->items;
