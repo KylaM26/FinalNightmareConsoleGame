@@ -10,13 +10,13 @@
 
 class CardDeck {
 private:
-	std::vector<Card> deck;
+	std::vector<Card> deck; // Contains an array of cards
 	int numberOfCards;
 
-	void ReadCardData(const char* path);
+	void ReadCardData(const char* path); // Reads card data from a file.
 public:
 	CardDeck();
-	CardDeck(int numberOfCards, const char* path);
+	CardDeck(int numberOfCards, const char* path); // Loads cards from file upon initiation.
 
 	void DisplayCards();
 	const Card ChooseCard(const int index) const;

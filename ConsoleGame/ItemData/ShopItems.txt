@@ -1,0 +1,2 @@
+Silver_Boots 5 10 0 0.0 50 3
+Frozen_Robe 10 10 5 0 75 2

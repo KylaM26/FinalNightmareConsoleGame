@@ -5,12 +5,12 @@
 
 class Shop {
 private:
-	Inventory shop;
+	Inventory shop; // The shop is an inventory 
 public:
 	Shop();
-	void ChooseClothingCategory();
-	void DisplayClothes(int choice) const;
-	void BuyItem(Player& player);
+	void ChooseClothingCategory(); // Chooses the category to shop by
+	void DisplayClothes(int choice) const; // Display clothes by category
+	void BuyItem(Player& player); // Adds item to player inventory after purchase
 	~Shop();
 };
 

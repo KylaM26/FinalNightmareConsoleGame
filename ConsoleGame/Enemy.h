@@ -17,10 +17,10 @@ private:
 public:
 	Enemy();
 	int health;
-	void UseCard(Player& player);
-	void DropLoot(Player& player);
-	void Die(Player& player);
-	void GetEnemyStatus() const;
+	void UseCard(Player& player); // Uses attack on player
+	void DropLoot(Player& player); // Drops an item and adds it to the player inventory.
+	void Die(Player& player); // This function calls droploot function.
+	void GetEnemyStatus() const; // Display health
 	int GetHealth() const;
 	~Enemy();
 };

@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 
+// For the item type
 enum ITEM_TYPE {
 	CAP = 0,
 	CHARM = 1,
@@ -12,7 +13,7 @@ enum ITEM_TYPE {
 
 class Item {
 public:
-	std::string name;
+	std::string name; 
 	int healthBonus, attackBonus;
 	int price;
 	float healBonus, criticalBonus;
@@ -20,11 +21,12 @@ public:
 
 	Item();
 
-	Item(const char* itemName, int health, int attack, float heal, float critical, int price, int itemType);
+	Item(const char* itemName, int health, int attack, float heal, float critical, int price, int itemType); // Initializing items
 
-	void DisplayStats() const;
+	void DisplayStats() const; // Displays item stats
 
-	const int GetHealthBonus() const;
+	// Getters
+	const int GetHealthBonus() const; 
 	const int GetAttackBonus() const;
 	const float GetHealBonus() const;
 	const float GetCriticalBonus() const;

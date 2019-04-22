@@ -4,6 +4,7 @@ Game::Game() {
 	// Instantiate variables
 	inventoryManager = InventoryManager();
 	battleManager = BattleManager();
+	shopManager = ShopManager();
 	//	menu = Menu();
 }
 
@@ -22,6 +23,9 @@ void Game::Play() {
 		system("cls");
 		break;
 	case 3: // Player wants to shop
+		shopManager.OpenShop(player);
+		system("pause");
+		system("cls");
 		break;
 
 	}

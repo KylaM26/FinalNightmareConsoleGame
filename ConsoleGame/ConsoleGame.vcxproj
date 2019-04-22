@@ -52,6 +52,9 @@
     <ClInclude Include="ShopManager.h" />
     <ClInclude Include="Utiltities.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="ItemData\ShopItems.txt" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{6422064E-C667-43FB-90A1-F0171C30AA39}</ProjectGuid>

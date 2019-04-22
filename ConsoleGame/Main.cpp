@@ -6,7 +6,7 @@ int main() {
 
 	try {
 		Game* game = new Game();
-
+ 
 		while (!game->GetQuitStatus()) {
 			game->Play();
 		}
